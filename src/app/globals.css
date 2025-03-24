@@ -1,21 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&family=Roboto&family=Srisakdi&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+    font-family: "Itim", serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #efefef;
+}
+
+.modal-content {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 0.3s ease-in-out forwards;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-up-animation {
+    animation: fadeUp 0.3s ease-in-out;
+    opacity: 0;
+    transform: translateY(-30px);
+    animation-fill-mode: forwards;
+}
+
+.bg-select-arrow {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-size: 1.2rem;
+    background-position: right 1rem center;
 }
