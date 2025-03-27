@@ -1,10 +1,11 @@
 import mysql from 'mysql2/promise';
 
 const pool = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'math_project',
+    host: process.env.DB_HOST || "localhost",
+    user: process.env.DB_USER || "root",
+    password: process.env.DB_PASS || "",
+    database: process.env.DB_NAME || "math",
+    port: parseInt(process.env.DB_PORT as string) || 3306,
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0
