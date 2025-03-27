@@ -1,18 +1,23 @@
-'use client';
-import React, { useState } from 'react';
+"use client";
+import React, { useState, useEffect } from 'react';
 import LoginModal from './LoginModal';
 import RegisterForm from './RegisterForm';
 import RegisterGroup from './RegisterGroup';
-
-const isActive = (path: string) => {
-    return window.location.pathname === path;
-};
 
 const Navbar: React.FC = () => {
     const [isRegisterOpen, setIsRegisterOpen] = useState(false);
     const [isGroupRegisterOpen, setIsGroupRegisterOpen] = useState(false);
     const [showRegisterOptions, setShowRegisterOptions] = useState(false);
     const [isLoginOpen, setIsLoginOpen] = useState(false);
+    const [currentPath, setCurrentPath] = useState('');
+
+    useEffect(() => {
+        setCurrentPath(window.location.pathname);
+    }, []);
+
+    const isActive = (path: string) => {
+        return currentPath === path;
+    };
 
     const toggleRegisterOptions = () => {
         setShowRegisterOptions(!showRegisterOptions);

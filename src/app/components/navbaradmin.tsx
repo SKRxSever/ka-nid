@@ -74,14 +74,16 @@ const InboxPopUp: React.FC<{
         </div>
     );
 };
-const isActive = (path: string) => {
-    return window.location.pathname === path;
-};
+
 const AdminNavbar: React.FC = () => {
     const [inbox, setInbox] = useState<Message[]>([]);
     const [isPopUpOpen, setIsPopUpOpen] = useState(false);
+    const [currentPath, setCurrentPath] = useState('');
 
     useEffect(() => {
+        // Set the current path when the component mounts
+        setCurrentPath(window.location.pathname);
+        
         const fetchInbox = async () => {
             const res = await fetch('/api/get-inbox');
             const data: Message[] = await res.json();
@@ -108,6 +110,10 @@ const AdminNavbar: React.FC = () => {
         setInbox(prev => prev.filter(msg => msg.id !== id));
     };
 
+    const isActive = (path: string) => {
+        return currentPath === path;
+    };
+
     return (
         <div className="fixed top-12 left-0 w-full flex justify-center items-center px-4">
             <div className="absolute left-4">
@@ -116,7 +122,7 @@ const AdminNavbar: React.FC = () => {
             <nav className="bg-sky-500 bg-opacity-75 py-2 px-4 w-6/12 hover:bg-opacity-100 transition duration-300 ease-in-out rounded-lg shadow-lg">
                 <div className="container mx-auto flex justify-between items-center">
                     <div className="flex space-x-12 ml-9">
-                    {['/admin/dashboard', '/admin/CreateExam', '/admin/reg_check', '/admin/listboard'].map((path, idx) => (
+                        {['/admin/dashboard', '/admin/CreateExam', '/admin/reg_check', '/admin/listboard'].map((path, idx) => (
                             <a
                                 key={idx}
                                 href={path}
