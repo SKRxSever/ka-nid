@@ -59,7 +59,7 @@ const Navbar: React.FC = () => {
                                 className={`px-2.5 p-1 rounded-lg text-lg transform transition duration-300 ease-in-out ${isActive(path) ? 'bg-blue-700 text-white hover:scale-110' : 'text-blue-200 hover:text-white hover:scale-110'
                                     }`}
                             >
-                                {['หน้าหลัก', 'ตรวจสอบการลง', 'วิธีสมัครสอบ', 'ข้อมูลติดต่อ'][idx]}
+                                {['หน้าหลัก', 'ตรวจสอบการลงทะเบียน', 'วิธีสมัครสอบ', 'ข้อมูลติดต่อ'][idx]}
                             </a>
                         ))}
                     </div>
